@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Send, Github, Twitter, Linkedin, Facebook } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 
 const Contact = () => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,7 +23,7 @@ const Contact = () => {
           </h2>
 
           <p className="text-gray-400 text-center mb-8 max-w-2xl mx-auto">
-            Une idée de projet ? N'hésitez pas à nous contacter pour en discuter
+            Une idée de projet ? N'hésitez pas à nous contacter pour en discuter.
           </p>
         </motion.div>
 
@@ -37,7 +35,7 @@ const Contact = () => {
             data-netlify-honeypot="bot-field"
             className="space-y-6"
           >
-            {/* Champ caché pour les bots */}
+            {/* Champ caché pour empêcher les bots */}
             <input type="hidden" name="form-name" value="contact" />
             <div>
               <label
@@ -110,39 +108,6 @@ const Contact = () => {
               <Send size={20} />
             </button>
           </form>
-
-          <div className="mt-8 text-center">
-            <p className="text-gray-400 mb-4">Suivez-nous sur les réseaux sociaux</p>
-            <div className="flex justify-center space-x-6">
-              <a
-                href="https://www.facebook.com/profile.php?id=61572934286958"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-neon-pink transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook size={24} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/fabien-culot-07922b347/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-neon-pink transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={24} />
-              </a>
-              <a
-                href="https://x.com/WebEnginex"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-neon-pink transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter size={24} />
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
