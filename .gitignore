@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Variables environement
+.env
+# Local Netlify folder
+.netlify
