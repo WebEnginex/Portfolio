@@ -82,7 +82,7 @@ const Footer = () => {
 
           {/* Legal Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white">Légal</h3>
+            <h3 className="text-lg font-semibold text-white">Informations légales</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/mentions-legales" className="text-gray-400 hover:text-neon-pink transition-colors">
