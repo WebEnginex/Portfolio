@@ -1,24 +1,15 @@
-import { useState } from 'react';
-import { Send, Github, Twitter, Linkedin, Facebook } from 'lucide-react';
+import { useState } from "react";
+import { Send, Github, Twitter, Linkedin, Facebook } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Message envoyé !",
-      description: "Nous vous répondrons dans les plus brefs délais.",
-    });
-    setFormData({ name: '', email: '', message: '' });
-  };
 
   return (
     <section id="contact" className="py-20 bg-black/30">
@@ -32,23 +23,37 @@ const Contact = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             Contactez <span className="text-gradient">Nous</span>
           </h2>
-          
+
           <p className="text-gray-400 text-center mb-8 max-w-2xl mx-auto">
             Une idée de projet ? N'hésitez pas à nous contacter pour en discuter
           </p>
         </motion.div>
 
         <div className="glass p-6 rounded-lg max-w-2xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            className="space-y-6"
+          >
+            {/* Champ caché pour les bots */}
+            <input type="hidden" name="form-name" value="contact" />
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-300 mb-2"
+              >
                 Nom complet
               </label>
               <input
                 type="text"
                 id="name"
+                name="name"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 required
                 className="w-full px-4 py-3 rounded-lg glass text-white bg-transparent focus:outline-none focus:ring-2 focus:ring-neon-pink"
                 placeholder="Votre nom complet"
@@ -56,14 +61,20 @@ const Contact = () => {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-300 mb-2"
+              >
                 Email
               </label>
               <input
                 type="email"
                 id="email"
+                name="email"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 required
                 className="w-full px-4 py-3 rounded-lg glass text-white bg-transparent focus:outline-none focus:ring-2 focus:ring-neon-pink"
                 placeholder="votre@email.com"
@@ -71,13 +82,19 @@ const Contact = () => {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-gray-300 mb-2"
+              >
                 Message
               </label>
               <textarea
                 id="message"
+                name="message"
                 value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
                 required
                 rows={6}
                 className="w-full px-4 py-3 rounded-lg glass text-white bg-transparent focus:outline-none focus:ring-2 focus:ring-neon-pink"
@@ -97,8 +114,8 @@ const Contact = () => {
           <div className="mt-8 text-center">
             <p className="text-gray-400 mb-4">Suivez-nous sur les réseaux sociaux</p>
             <div className="flex justify-center space-x-6">
-            <a 
-                href="https://www.facebook.com/profile.php?id=61572934286958" 
+              <a
+                href="https://www.facebook.com/profile.php?id=61572934286958"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-neon-pink transition-colors"
@@ -106,8 +123,8 @@ const Contact = () => {
               >
                 <Facebook size={24} />
               </a>
-              <a 
-                href="https://www.linkedin.com/in/fabien-culot-07922b347/" 
+              <a
+                href="https://www.linkedin.com/in/fabien-culot-07922b347/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-neon-pink transition-colors"
@@ -115,9 +132,8 @@ const Contact = () => {
               >
                 <Linkedin size={24} />
               </a>
-              
-              <a 
-                href="https://x.com/WebEnginex" 
+              <a
+                href="https://x.com/WebEnginex"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-neon-pink transition-colors"
