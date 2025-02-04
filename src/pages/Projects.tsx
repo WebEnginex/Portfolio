@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { projects } from '@/components/Portfolio';
@@ -7,6 +7,10 @@ import { motion } from 'framer-motion';
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-black">

@@ -18,7 +18,13 @@ const Navigation = () => {
   }, []);
 
   const handleNavigation = (href: string) => {
-    if (href.startsWith('#')) {
+    if (href === '/') {
+      navigate('/', { replace: true });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (href === '/projects') {
+      navigate('/projects', { replace: true });
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
+    } else if (href.startsWith('#')) {
       if (location.pathname !== '/') {
         navigate('/', { state: { scrollTo: href.substring(1) } });
       } else {
@@ -41,7 +47,7 @@ const Navigation = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass py-4' : 'py-6'}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold text-gradient">
+          <Link to="/" className="text-2xl font-bold text-gradient" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             WebEngine
           </Link>
 
