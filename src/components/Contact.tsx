@@ -1,44 +1,13 @@
 import { useState } from "react";
 import { Send } from "lucide-react";
 import { motion } from "framer-motion";
-import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch("/.netlify/functions/sendMail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setFormData({ name: "", email: "", message: "" });
-        toast({
-          title: "Message envoyé !",
-          description: "Nous vous répondrons dans les plus brefs délais.",
-        });
-      } else {
-        throw new Error("Erreur lors de l'envoi");
-      }
-    } catch (error) {
-      toast({
-        title: "Erreur",
-        description: "Une erreur est survenue. Veuillez réessayer plus tard.",
-      });
-    }
-  };
 
   return (
     <section id="contact" className="py-20 bg-black/30">
@@ -58,7 +27,11 @@ const Contact = () => {
         </motion.div>
 
         <div className="glass p-6 rounded-lg max-w-2xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form
+            action="https://formspree.io/f/mwpoovyj" // URL Formspree
+            method="POST"
+            className="space-y-6"
+          >
             {/* Nom */}
             <div>
               <label

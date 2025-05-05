@@ -86,7 +86,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden glass mt-4 rounded-lg p-4">
+          <div className="md:hidden bg-black bg-opacity-90 mt-4 rounded-lg p-4">
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 item.isRoute ? (
